@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vite + Solid + TS</title>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+        />
+    </head>
+    <body>
+        <h1 id="chosung"></h1>
+        <p>초성으로 단어를 맞춰보아요</p>
+        <ul id="log_wrapper"></ul>
+        <form id="answer_form">
+            <input
+                type="text"
+                placeholder="Type your answer here:"
+                name="answer_input"
+            />
+            <button type="submit">Submit</button>
+        </form>
+
+        <script type="module" src="/src/index.tsx"></script>
+    </body>
+</html>
