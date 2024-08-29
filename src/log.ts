@@ -1,4 +1,4 @@
-const logWrapper = document.getElementById('log_wrapper')!
+export const logWrapper = document.getElementById('log_wrapper')!
 
 function log(message: string) {
     const p = document.createElement('li')
