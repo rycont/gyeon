@@ -4,8 +4,6 @@ export async function onRequest(context) {
     const trial = uri.searchParams.get('trial')
     const correctAnswer = uri.searchParams.get('answer')
 
-    console.log(correctAnswer, trial)
-
     const ANTHROPIC_API_KEY = context.env.ANTHROPIC_API_KEY
 
     const response = await fetch('https://api.anthropic.com/v1/messages', {
