@@ -4,7 +4,11 @@ import log from './log'
 import { showFinishCard } from './show-finish-card'
 import todaysWord, { todaysChosung } from './todays-word'
 
-export let trialCounter = 0
+let trialCounter = 0
+
+const submitButton = document.getElementById(
+    'submit_button'
+) as HTMLButtonElement
 
 export default async function tryAnswer(trial: string) {
     trialCounter++
@@ -21,6 +25,9 @@ export default async function tryAnswer(trial: string) {
         return
     }
 
+    submitButton.setAttribute('disabled', 'true')
     const comparisonSentence = await createWordComparisonSentence(trial)
+    submitButton.removeAttribute('disabled')
+
     log(`${trial}보다 ${comparisonSentence}`)
 }
