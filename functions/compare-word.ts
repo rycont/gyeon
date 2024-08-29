@@ -2,9 +2,9 @@ export async function onRequest(context) {
     const uri = new URL(context.request.url)
 
     const trial = uri.searchParams.get('trial')
-    const correntAnswer = uri.searchParams.get('answer')
+    const correctAnswer = uri.searchParams.get('answer')
 
-    console.log(correntAnswer, trial)
+    console.log(correctAnswer, trial)
 
     const ANTHROPIC_API_KEY = context.env.ANTHROPIC_API_KEY
 
@@ -24,7 +24,7 @@ export async function onRequest(context) {
                     content: [
                         {
                             type: 'text',
-                            text: '도서관',
+                            text: trial,
                         },
                     ],
                 },
@@ -33,13 +33,13 @@ export async function onRequest(context) {
                     content: [
                         {
                             type: 'text',
-                            text: '코끼리는',
+                            text: `${correctAnswer}는 ${trial}보다`,
                         },
                     ],
                 },
             ],
-            stop_sequences: [correntAnswer],
-            system: `단어 맞추기 게임을 하자. 정답은 "${correntAnswer}"야. 사람들이 네게 단어를 말할거야. "${correntAnswer}"와 해당 단어를 비교해서, 창의적인 비교급 문장을 한 문장 써주면 돼.`,
+            stop_sequences: [correctAnswer],
+            system: `단어 맞추기 게임을 하자. 정답은 "${correctAnswer}"야. 사람들이 네게 단어를 말할거야. "${correctAnswer}"와 해당 단어를 비교해서, 창의적인 비교급 문장을 한 문장 써주면 돼.`,
         }),
     })
 
