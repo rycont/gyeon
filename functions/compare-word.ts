@@ -42,6 +42,7 @@ export async function onRequest(context) {
     })
 
     const data = await response.json()
+    console.log(data)
     const sentence = data.content[0].text
 
     return new Response(sentence)

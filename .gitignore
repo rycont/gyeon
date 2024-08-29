@@ -23,5 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 
-wrangler.dev.toml
+.dev.vars
 .wrangler/*
