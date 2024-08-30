@@ -10,6 +10,8 @@ const submitButton = document.getElementById(
     'submit_button'
 ) as HTMLButtonElement
 
+const answerInput = document.getElementById('answer_input') as HTMLInputElement
+
 export default async function tryAnswer(trial: string) {
     trialCounter++
 
@@ -17,6 +19,8 @@ export default async function tryAnswer(trial: string) {
         alert(`초성이 ${todaysChosung}이여야 합니다`)
         return
     }
+
+    answerInput.value = ''
 
     if (todaysWord === trial) {
         log(`${todaysWord}: 정답입니다!`)
