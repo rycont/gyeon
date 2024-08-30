@@ -11,8 +11,8 @@ async function getTodaysWord() {
 
 function getTodaysIndex(wordsQuantity: number) {
     let date = +new Date()
-    const stampWithoutTime = (date = date - (date % 86400000))
-    return (stampWithoutTime % 10000) ** 2 % wordsQuantity
+    const stampWithoutTime = (date - (date % 86400000)) / 86400000
+    return stampWithoutTime ** 2 % wordsQuantity
 }
 
 const todaysWord = await getTodaysWord()
