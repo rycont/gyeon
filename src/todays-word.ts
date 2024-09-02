@@ -11,6 +11,8 @@ async function getTodaysWord() {
 
 function getTodaysIndex(wordsQuantity: number) {
     const date = new Date()
+    date.setHours(0, 0, 0, 0)
+
     const dateString = date.toISOString().split('T')[0]
     let hash = 0
     for (let i = 0; i < dateString.length; i++) {
