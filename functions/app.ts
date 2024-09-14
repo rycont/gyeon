@@ -2,6 +2,7 @@ import '@std/dotenv/load'
 
 import { Context } from '@hono/hono'
 import { Hono } from '@hono/hono'
+import { cors } from '@hono/hono/cors'
 
 const ANTHROPIC_API_KEY = Deno.env.get('ANTHROPIC_API_KEY')
 if (!ANTHROPIC_API_KEY) {
@@ -10,6 +11,14 @@ if (!ANTHROPIC_API_KEY) {
 
 const app = new Hono()
 
+app.use(
+    cors({
+        origin: [
+            'https://gyeon.postica.app',
+            'https://symmetrical-guide-9qjqwj65rgjc749x-5173.app.github.dev',
+        ],
+    })
+)
 app.get('/compare-word', async (c: Context) => {
     const trial = c.req.query('trial')
     const correctAnswer = c.req.query('answer')
