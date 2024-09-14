@@ -1,9 +1,34 @@
 export default function getChosung(word: string) {
-  const chosung = Array.from(word).map((e) => {
-    const code = e.charCodeAt(0) - 44032;
-    if (code < 0 || code > 11171) return e;
-    return String.fromCharCode(Math.floor(code / 588) + 4352);
-  });
+    const chars = [...word]
+    const chosung = chars.map((char) => {
+        const hangulIndex = char.charCodeAt(0) - 44032
+        if (hangulIndex < 0 || hangulIndex > 11171) {
+            return char
+        }
 
-  return chosung.join("");
+        const chosungIndex = Math.floor(hangulIndex / 588)
+        return [
+            'ㄱ',
+            'ㄲ',
+            'ㄴ',
+            'ㄷ',
+            'ㄸ',
+            'ㄹ',
+            'ㅁ',
+            'ㅂ',
+            'ㅃ',
+            'ㅅ',
+            'ㅆ',
+            'ㅇ',
+            'ㅈ',
+            'ㅉ',
+            'ㅊ',
+            'ㅋ',
+            'ㅌ',
+            'ㅍ',
+            'ㅎ',
+        ][chosungIndex]
+    })
+
+    return chosung.join('')
 }
