@@ -1,5 +1,7 @@
 import '@std/dotenv/load'
 
+import 'npm:josa-complete'
+
 import { Context } from '@hono/hono'
 import { Hono } from '@hono/hono'
 import { cors } from '@hono/hono/cors'
@@ -15,13 +17,17 @@ app.use(
     cors({
         origin: [
             'https://gyeon.postica.app',
-            'https://symmetrical-guide-9qjqwj65rgjc749x-5173.app.github.dev',
+            'https://ideal-chainsaw-rpprrgr7rv3xxq6-5173.app.github.dev',
         ],
     })
 )
 app.get('/compare-word', async (c: Context) => {
     const trial = c.req.query('trial')
     const correctAnswer = c.req.query('answer')
+    const chatHistory = JSON.parse(c.req.query('chat-history')!) as {
+        role: 'user' | 'assistant'
+        text: string
+    }[]
 
     if (!trial || !correctAnswer) {
         c.status(400)
@@ -38,9 +44,18 @@ app.get('/compare-word', async (c: Context) => {
                 'content-type': 'application/json',
             },
             body: JSON.stringify({
-                model: 'claude-3-5-sonnet-20240620',
+                model: 'claude-3-5-sonnet-20241022',
                 max_tokens: 1024,
                 messages: [
+                    ...chatHistory.map((message) => ({
+                        role: message.role,
+                        content: [
+                            {
+                                type: 'text',
+                                text: message.text,
+                            },
+                        ],
+                    })),
                     {
                         role: 'user',
                         content: [
@@ -55,19 +70,17 @@ app.get('/compare-word', async (c: Context) => {
                         content: [
                             {
                                 type: 'text',
-                                text: `${correctAnswer}는 ${trial}보다`,
+                                text: `${correctAnswer.은는} ${trial}보다`,
                             },
                         ],
                     },
                 ],
-                stop_sequences: [correctAnswer],
-                system: `단어 맞추기 게임을 하자. 정답은 "${correctAnswer}"야. 사람들이 네게 단어를 말할거야. "${correctAnswer}"와 해당 단어를 비교해서, 창의적인 비교급 문장을 한 문장 써주면 돼.`,
+                system: `단어 맞추기 게임을 하자. 정답은 "${correctAnswer}"야. 사람들이 네게 단어를 말할거야. ${correctAnswer.와과} 해당 단어를 비교해서 창의적인 비교급 문장을 한 문장 써주면 돼. 절대로 답변에 ${correctAnswer.을를} 포함하면 안돼.`,
             }),
         }
     )
 
     const data = await response.json()
-    console.log(data)
     const sentence = data.content[0].text
 
     return c.text(sentence)
