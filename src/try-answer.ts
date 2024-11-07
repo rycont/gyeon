@@ -23,7 +23,7 @@ export default async function tryAnswer(trial: string) {
 
     if (todaysWord === trial) {
         log(`${todaysWord}: 정답입니다!`)
-        showFinishCard(chatHistory.length)
+        showFinishCard(chatHistory.length / 2 + 1)
 
         return
     }
