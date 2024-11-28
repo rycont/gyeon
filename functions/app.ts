@@ -103,7 +103,10 @@ app.get('/compare-word', async (c: Context) => {
         trial,
         correctAnswer,
         sentence,
+        lm: ANTHROPIC_MODEL_ID,
+        trialCounts: chatHistory.length / 2,
     }
+
     const logKey = ['trial', user, session, chatHistory.length / 2]
 
     await kv.set(logKey, logRecord)
