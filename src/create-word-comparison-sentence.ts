@@ -1,6 +1,9 @@
 import todaysWord from './todays-word'
+import { userId } from './user'
 
 const { VITE_COMPARE_API_PATH } = import.meta.env
+
+const SESSION_UUID = crypto.randomUUID()
 
 export const chatHistory: {
     role: 'user' | 'assistant'
@@ -17,6 +20,8 @@ export async function createWordComparisonSentence(
                 trial,
                 answer,
                 'chat-history': JSON.stringify(chatHistory),
+                session: SESSION_UUID,
+                user: userId,
             })
     )
 

@@ -6,12 +6,16 @@ import { Context } from '@hono/hono'
 import { Hono } from '@hono/hono'
 import { cors } from '@hono/hono/cors'
 
+const CFLARE_ACCOUNT_ID = '151c47aea09345bea53fef9648b8b958'
+const ANTHROPIC_MODEL_ID = 'claude-3-5-haiku-20241022'
+
 const ANTHROPIC_API_KEY = Deno.env.get('ANTHROPIC_API_KEY')
 if (!ANTHROPIC_API_KEY) {
     throw new Error('ANTHROPIC_API_KEY is not set')
 }
 
 const app = new Hono()
+const kv = await Deno.openKv()
 
 app.use(
     cors({
@@ -21,9 +25,14 @@ app.use(
         ],
     })
 )
+
 app.get('/compare-word', async (c: Context) => {
     const trial = c.req.query('trial')
     const correctAnswer = c.req.query('answer')
+
+    const user = c.req.query('user')
+    const session = c.req.query('session')
+
     const chatHistory = JSON.parse(c.req.query('chat-history')!) as {
         role: 'user' | 'assistant'
         text: string
@@ -34,8 +43,13 @@ app.get('/compare-word', async (c: Context) => {
         return c.text('trial과 answer를 입력해주세요.')
     }
 
+    if (!user || !session) {
+        c.status(400)
+        return c.text('user와 session을 입력해주세요.')
+    }
+
     const response = await fetch(
-        'https://gateway.ai.cloudflare.com/v1/151c47aea09345bea53fef9648b8b958/gyeon-ai/anthropic/v1/messages',
+        `https://gateway.ai.cloudflare.com/v1/${CFLARE_ACCOUNT_ID}/gyeon-ai/anthropic/v1/messages`,
         {
             method: 'POST',
             headers: {
@@ -44,7 +58,7 @@ app.get('/compare-word', async (c: Context) => {
                 'content-type': 'application/json',
             },
             body: JSON.stringify({
-                model: 'claude-3-5-haiku-20241022',
+                model: ANTHROPIC_MODEL_ID,
                 max_tokens: 1024,
                 messages: [
                     ...chatHistory.map((message) => ({
@@ -82,6 +96,17 @@ app.get('/compare-word', async (c: Context) => {
 
     const data = await response.json()
     const sentence = data.content[0].text
+
+    const logRecord = {
+        user,
+        session,
+        trial,
+        correctAnswer,
+        sentence,
+    }
+    const logKey = ['trial', user, session, chatHistory.length / 2]
+
+    await kv.set(logKey, logRecord)
 
     return c.text(sentence)
 })
