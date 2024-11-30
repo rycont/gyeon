@@ -34,7 +34,7 @@ export async function getHintFromAnthropic({
                                 text: message.text,
                             },
                         ],
-                    })),
+                    })),*/
                     {
                         role: 'user',
                         content: [
@@ -43,7 +43,7 @@ export async function getHintFromAnthropic({
                                 text: trial,
                             },
                         ],
-                    },*/
+                    },
                     {
                         role: 'assistant',
                         content: [
