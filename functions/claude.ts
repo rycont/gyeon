@@ -25,7 +25,7 @@ export async function getHintFromAnthropic({
             body: JSON.stringify({
                 model: ANTHROPIC_MODEL_ID,
                 max_tokens: 1024,
-                messages: [
+                messages: [/*
                     ...chatHistory.map((message) => ({
                         role: message.role,
                         content: [
@@ -43,7 +43,7 @@ export async function getHintFromAnthropic({
                                 text: trial,
                             },
                         ],
-                    },
+                    },*/
                     {
                         role: 'assistant',
                         content: [
