@@ -54,7 +54,7 @@ export async function getHintFromAnthropic({
                         ],
                     },
                 ],
-                system: `단어 맞추기 게임을 하자. 정답은 "${correctAnswer}"야. 사람들이 네게 단어를 말할거야. ${correctAnswer.와과} 해당 단어를 비교해서 비교급 문장을 한 문장 써주면 돼. 맞추기 쉽게 풍부하고 이해하기 쉬운 힌트를 줘.`,
+                system: `단어 맞추기 게임을 하자. 정답은 "${correctAnswer}"야. 사람들이 네게 단어를 말할거야. ${correctAnswer.와과} 해당 단어를 비교해서 차이와 공통점을 말해주면 돼. 맞추기 쉽게 풍부하고 이해하기 쉬운 힌트를 줘.`,
             }),
         }
     )
