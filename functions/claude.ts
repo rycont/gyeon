@@ -54,7 +54,7 @@ export async function getHintFromAnthropic({
                         ],
                     },
                 ],
-                system: `단어 맞추기 게임을 하자. 정답은 "${correctAnswer}"야. 사람들이 네게 단어를 말할거야. ${correctAnswer.와과} 해당 단어를 비교해서 창의적인 비교급 문장을 한 문장 써주면 돼. 절대로 답변에 ${correctAnswer.을를} 포함하면 안돼.`,
+                system: `단어 맞추기 게임을 하자. 정답은 "${correctAnswer}"야. 사람들이 네게 단어를 말할거야. ${correctAnswer.와과} 해당 단어를 비교해서 비교급 문장을 한 문장 써주면 돼. 맞추기 쉽게 풍부한 힌트를 줘.`,
             }),
         }
     )
