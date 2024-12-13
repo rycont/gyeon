@@ -12,8 +12,7 @@ export function showFinishCard(trials: number) {
 
     const template = [
         `${todayString} #견주기 ${trials}번째 시도에 성공했습니다.`,
-        `첫 시도: ${chatHistory[1].text}`,
-        `초성이 ${todaysChosung}인 단어를 맞출 수 있을까요?`,
+        `초성이 ${todaysChosung}인 단어를 맞출 수 있을까요? ` + chatHistory[1].text,
         location.origin,
     ]
 
