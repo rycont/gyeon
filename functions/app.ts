@@ -13,6 +13,7 @@ app.use(
         origin: [
             'https://gyeon.postica.app',
             'https://ideal-chainsaw-rpprrgr7rv3xxq6-5173.app.github.dev',
+'https://update-share-message.word-guessing.pages.dev'
         ],
     })
 )
