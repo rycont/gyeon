@@ -1,8 +1,9 @@
-import { createHintText } from './create-hint-text'
-import { chatHistory } from './create-word-comparison-sentence'
-import { trialInput } from './elements'
 import { disableHintMode, removeHintButton } from './handle-hint'
-import log from './log'
+import { createHintText } from './create-hint-text'
+import { trialInput } from './elements'
+import log, { logs } from './log'
+
+import { recordEvent } from './umami'
 
 export let leftHint = 1
 
@@ -25,8 +26,8 @@ export async function tryHint(question: string) {
     disableHintMode()
     removeHintButton()
 
-    umami.track('hint', {
+    recordEvent('hint', {
         question,
-        trialCount: chatHistory.length / 2 + 1,
+        trialCount: logs.length,
     })
 }

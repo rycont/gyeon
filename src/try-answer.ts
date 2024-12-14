@@ -1,12 +1,11 @@
-import {
-    chatHistory,
-    createWordComparisonSentence,
-} from './create-word-comparison-sentence'
-import { trialInput, submitButton } from './elements'
-import getChosung from './get-chosung'
-import log from './log'
-import { showFinishCard } from './show-finish-card'
+import { createWordComparisonSentence } from './create-word-comparison-sentence'
 import todaysWord, { todaysChosung } from './todays-word'
+import { trialInput, submitButton } from './elements'
+import { showFinishCard } from './show-finish-card'
+import getChosung from './get-chosung'
+import log, { logs } from './log'
+
+import { recordEvent } from './umami'
 
 export default async function tryAnswer(trial: string) {
     if (todaysChosung !== getChosung(trial)) {
@@ -18,7 +17,7 @@ export default async function tryAnswer(trial: string) {
 
     if (todaysWord === trial) {
         log(`${todaysWord}: 정답입니다!`)
-        showFinishCard(chatHistory.length / 2 + 1)
+        showFinishCard(logs.length)
 
         return
     }
@@ -29,8 +28,8 @@ export default async function tryAnswer(trial: string) {
 
     log(`${trial}보다 ${comparisonSentence}`)
 
-    umami.track('try', {
+    recordEvent('try', {
         trial,
-        trialCount: chatHistory.length / 2 + 1,
+        trialCount: logs.length,
     })
 }

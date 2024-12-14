@@ -1,9 +1,10 @@
 import { logWrapper } from './log'
 import { todaysChosung } from './todays-word'
 import { firstTrial } from './create-word-comparison-sentence'
+import { recordEvent } from './umami'
 
 export function showFinishCard(trials: number) {
-    umami.track('finish', { trialCount: trials })
+    recordEvent('finish', { trialCount: trials })
     const card = document.createElement('blockquote')
 
     const p = document.createElement('p')
