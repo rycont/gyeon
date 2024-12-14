@@ -1,6 +1,8 @@
 {
   "imports": {
+    "@google/generative-ai": "npm:@google/generative-ai@^0.21.0",
     "@hono/hono": "jsr:@hono/hono@^4.6.1",
     "@std/dotenv": "jsr:@std/dotenv@^0.225.2"
-  }
+  },
+  "nodeModulesDir": "auto"
 }
