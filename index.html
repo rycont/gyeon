@@ -16,25 +16,53 @@
         <style>
             @import url('https://fastly.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.1/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css');
 
+            @font-face {
+                font-family: 'FlightSans-Bold';
+                src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-1@1.0/FlightSans-Bold.woff2')
+                    format('woff2');
+                font-weight: 700;
+                font-style: normal;
+            }
+
+            h1 {
+                font-family: 'FlightSans-Bold', sans-serif;
+                font-size: 1.6rem;
+            }
+
             body {
                 font-family: 'Wanted Sans Variable', sans-serif;
+            }
+
+            #chosung {
+                display: flex;
+                gap: 0.5rem;
+                font-size: 1.6rem;
+            }
+
+            #chosung div {
+                font-weight: 700;
+                border: 2px solid var(--border);
+                border-radius: 4px;
+                padding: 0.3rem 0.5rem;
             }
         </style>
     </head>
     <body>
-        <h1 id="chosung"></h1>
-        <p>견주기에 오신걸 환영합니다. 초성으로 단어를 맞춰보세요.</p>
-        <ul id="log_wrapper"></ul>
+        <h1>오늘의 견주기</h1>
+        <div id="chosung"></div>
+        <p>위 초성으로 단어를 맞춰보세요.</p>
+        <hr />
+        <div id="log_wrapper"></div>
         <form id="answer_form">
             <input
                 type="text"
-                placeholder="Type your answer here:"
+                placeholder="정답 입력"
                 name="answer_input"
                 id="answer_input"
                 autocomplete="off"
                 autofocus
             />
-            <button type="submit" id="submit_button">Submit</button>
+            <button type="submit" id="submit_button">도전!</button>
         </form>
 
         <script type="module" src="/src/index.tsx"></script>
