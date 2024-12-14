@@ -1,5 +1,6 @@
 import { logWrapper } from './log'
 import { todaysChosung } from './todays-word'
+import { firstTrial } from './create-word-comparison-sentence'
 
 export function showFinishCard(trials: number) {
     const card = document.createElement('blockquote')
@@ -10,10 +11,10 @@ export function showFinishCard(trials: number) {
     const todayString = today.getMonth() + 1 + '월 ' + today.getDate() + '일'
 
     const template = [
-        `${todayString} #견주기 ${trials}번째 시도에 성공했습니다.`,
-        `초성이 ${todaysChosung}인 단어를 맞출 수 있을까요?`,
+        `${todayString} #견주기 ${trials}번째 시도에 성공했습니다.\n초성이 ${todaysChosung}인 단어를 맞출 수 있을까요?`,
+        firstTrial,
         location.origin,
-    ]
+    ].filter(Boolean)
 
     p.innerHTML = template.join('<br>')
 

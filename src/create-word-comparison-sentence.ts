@@ -10,6 +10,8 @@ export const chatHistory: {
     text: string
 }[] = []
 
+export let firstTrial: string | null = null
+
 export async function createWordComparisonSentence(
     trial: string,
     answer: string = todaysWord
@@ -32,6 +34,10 @@ export async function createWordComparisonSentence(
         role: 'assistant',
         text: `${answer}는 ${trial}보다${sentence}`,
     })
+
+    if (firstTrial === null && !sentence.includes(answer)) {
+        firstTrial = `${trial}보다${sentence}`
+    }
 
     while (sentence.includes(answer)) {
         const leakedIndex = sentence.indexOf(answer)
