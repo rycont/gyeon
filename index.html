@@ -24,6 +24,10 @@
                 font-style: normal;
             }
 
+            :root {
+                --accent: #7756a3;
+            }
+
             h1 {
                 font-family: 'FlightSans-Bold', sans-serif;
                 font-size: 1.6rem;
@@ -45,6 +49,52 @@
                 border-radius: 4px;
                 padding: 0.3rem 0.5rem;
             }
+
+            #buttons {
+                display: flex;
+                gap: 0.5rem;
+                /* justify-content: flex-end; */
+            }
+
+            button {
+                background-color: #4b4b4b;
+                color: white;
+                border-radius: 24px;
+            }
+
+            button.ghost {
+                background-color: transparent;
+                color: #4b4b4b;
+                padding: 0px;
+                text-decoration: underline;
+                border-radius: 0px;
+            }
+
+            #answer_form.hint-mode #hint_button {
+                color: var(--accent);
+            }
+
+            #answer_form.hint-mode #answer_input {
+                animation: waving-shadow 2s infinite;
+            }
+
+            #answer_form.hint-mode button:not(.ghost) {
+                background-color: var(--accent);
+            }
+
+            @keyframes waving-shadow {
+                0% {
+                    box-shadow: 0 0 0 2px var(--accent);
+                }
+
+                50% {
+                    box-shadow: 0 0 0 3px var(--accent);
+                }
+
+                100% {
+                    box-shadow: 0 0 0 2px var(--accent);
+                }
+            }
         </style>
     </head>
     <body>
@@ -62,7 +112,10 @@
                 autocomplete="off"
                 autofocus
             />
-            <button type="submit" id="submit_button">도전!</button>
+            <div id="buttons">
+                <button type="submit" id="submit_button">도전!</button>
+                <button id="hint_button" class="ghost">힌트(1)</button>
+            </div>
         </form>
 
         <script type="module" src="/src/index.tsx"></script>
