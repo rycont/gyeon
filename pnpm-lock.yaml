@@ -12,6 +12,9 @@ importers:
         specifier: ^1.8.20
         version: 1.8.21
     devDependencies:
+      '@types/umami':
+        specifier: ^2.10.0
+        version: 2.10.0
       typescript:
         specifier: ^5.5.3
         version: 5.5.4
@@ -363,6 +366,9 @@ packages:
 
   '@types/estree@1.0.5':
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
+
+  '@types/umami@2.10.0':
+    resolution: {integrity: sha512-iWcs1KkcO3ooIi2rR9M5drmpQzlsT+sFiyWElIGmVwjdGlp+vQmy/VYIChYnF5ETqx7KrL80JfSkroS6dm37Hg==}
 
   ansi-styles@3.2.1:
     resolution: {integrity: sha512-VT0ZI6kZRdTh8YyJw3SMbYm/u+NqfsAxEpWO0Pf9sq8/e94WxxOpPKx9FR1FlyCtOVDNOQ+8ntlqFxiRc+r5qA==}
@@ -880,6 +886,8 @@ snapshots:
       '@babel/types': 7.25.4
 
   '@types/estree@1.0.5': {}
+
+  '@types/umami@2.10.0': {}
 
   ansi-styles@3.2.1:
     dependencies:

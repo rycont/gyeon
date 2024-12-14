@@ -33,4 +33,9 @@ export default async function tryAnswer(trial: string) {
     submitButton.removeAttribute('disabled')
 
     log(`#${chatHistory.length / 2}: ${trial}보다 ${comparisonSentence}`)
+
+    umami.track('try', {
+        trial,
+        trialCount: chatHistory.length / 2 + 1,
+    })
 }

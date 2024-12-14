@@ -1,8 +1,9 @@
 import { logWrapper } from './log'
 import { todaysChosung } from './todays-word'
-import { firstTrial } from './create-word-comparison-sentence'
+import { chatHistory, firstTrial } from './create-word-comparison-sentence'
 
 export function showFinishCard(trials: number) {
+    umami.track('finish', { trialCount: trials })
     const card = document.createElement('blockquote')
 
     const p = document.createElement('p')
