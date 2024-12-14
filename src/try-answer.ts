@@ -32,5 +32,5 @@ export default async function tryAnswer(trial: string) {
     const comparisonSentence = await createWordComparisonSentence(trial)
     submitButton.removeAttribute('disabled')
 
-    log(`${trial}보다 ${comparisonSentence}`)
+    log(`#${chatHistory.length / 2}: ${trial}보다 ${comparisonSentence}`)
 }

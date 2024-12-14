@@ -1,8 +1,12 @@
 import getChosung from './get-chosung'
 
+const todaysChosungElement = document.getElementById('chosung')!
+
 export default function showTodaysChosung(todaysWord: string) {
-    const todaysChosungElement = document.getElementById('chosung')!
-    todaysChosungElement.appendChild(
-        document.createTextNode("오늘의 견주기: "+getChosung(todaysWord))
-    )
+    for (const chosung of getChosung(todaysWord)) {
+        const div = document.createElement('div')
+        div.appendChild(document.createTextNode(chosung))
+        todaysChosungElement.appendChild(div)
+    }
 }
+
