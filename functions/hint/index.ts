@@ -42,7 +42,7 @@ async function getHintText(answer: string, question: string): Promise<string> {
                 ],
             },
         ],
-        systemInstruction: `너는 단어 맞추기 게임을 하고 있어. 정답은 "${answer}"야. 사용자가 한 질문에 답변을 해주면 되는데, 절대로 답변에 정답 단어를 포함해선 안돼.`,
+        systemInstruction: `너는 단어 맞추기 게임을 하고 있어. 정답은 "${answer}"야. 사용자가 한 질문에 답변을 해주면 되는데, 절대로 답변에 정답 단어를 포함해선 안돼. 게임 진행과 관련이 없는 질문은 가볍게 무시해.`,
     })
 
     return response.text()
