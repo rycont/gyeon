@@ -18,6 +18,7 @@ export async function createWordComparisonSentence(
 ): Promise<string> {
     const response = await fetch(
         VITE_COMPARE_API_PATH +
+            '/compare-word?' +
             new URLSearchParams({
                 trial,
                 answer,

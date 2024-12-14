@@ -2,19 +2,18 @@ import {
     CFLARE_ACCOUNT_ID,
     ANTHROPIC_API_KEY,
     ANTHROPIC_MODEL_ID,
-} from './constants.ts'
+    CFLARE_GATEWAY_ID,
+} from '../constants.ts'
 
 export async function getHintFromAnthropic({
     trial,
     correctAnswer,
-    chatHistory,
 }: {
     trial: string
     correctAnswer: string
-    chatHistory: { role: 'user' | 'assistant'; text: string }[]
 }) {
     const response = await fetch(
-        `https://gateway.ai.cloudflare.com/v1/${CFLARE_ACCOUNT_ID}/gyeon-ai/anthropic/v1/messages`,
+        `https://gateway.ai.cloudflare.com/v1/${CFLARE_ACCOUNT_ID}/${CFLARE_GATEWAY_ID}/anthropic/v1/messages`,
         {
             method: 'POST',
             headers: {
