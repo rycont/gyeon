@@ -2,7 +2,7 @@ import {
     chatHistory,
     createWordComparisonSentence,
 } from './create-word-comparison-sentence'
-import { answerInput, submitButton } from './elements'
+import { trialInput, submitButton } from './elements'
 import getChosung from './get-chosung'
 import log from './log'
 import { showFinishCard } from './show-finish-card'
@@ -14,7 +14,7 @@ export default async function tryAnswer(trial: string) {
         return
     }
 
-    answerInput.value = ''
+    trialInput.value = ''
 
     if (todaysWord === trial) {
         log(`${todaysWord}: 정답입니다!`)

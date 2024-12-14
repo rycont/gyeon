@@ -1,5 +1,5 @@
-import { answerInput } from './elements'
+import { trialInput } from './elements'
 
-export function tryHint(trial: string) {
-    answerInput.value = ''
+export function tryHint(_trial: string) {
+    trialInput.value = ''
 }
