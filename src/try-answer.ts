@@ -27,7 +27,7 @@ export default async function tryAnswer(trial: string) {
     const comparisonSentence = await createWordComparisonSentence(trial)
     submitButton.removeAttribute('disabled')
 
-    log(`#${chatHistory.length / 2}: ${trial}보다 ${comparisonSentence}`)
+    log(`${trial}보다 ${comparisonSentence}`)
 
     umami.track('try', {
         trial,
