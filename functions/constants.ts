@@ -1,6 +1,6 @@
 import '@std/dotenv/load'
 
-export const ANTHROPIC_MODEL_ID = 'claude-3-5-sonnet-20241022'
+export const ANTHROPIC_MODEL_ID = 'claude-sonnet-4-0'
 export const CFLARE_ACCOUNT_ID = '151c47aea09345bea53fef9648b8b958'
 export const CFLARE_GATEWAY_ID = 'gyeon-ai'
 
