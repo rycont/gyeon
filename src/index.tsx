@@ -9,8 +9,8 @@ import { elements } from './elements'
 showTodaysChosung(todaysWord)
 
 const consecutiveLoginDaysElement = elements.body.querySelector(
-    '#consecutive-login-days',
+    '#consecutive-login-days'
 )
-if (consecutiveLoginDaysElement) {
+if (consecutiveLoginDaysElement && consecutiveLoginDays > 1) {
     consecutiveLoginDaysElement.textContent = `${consecutiveLoginDays}일 연속 출석`
 }
