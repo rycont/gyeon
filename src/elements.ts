@@ -13,3 +13,9 @@ export const inputForm = document.getElementById(
 export const hintButton = document.getElementById(
     'hint_button'
 ) as HTMLButtonElement
+
+// Add the missing elements export
+export const elements = {
+    body: document.body,
+    // You can add other frequently accessed elements here if needed
+};
