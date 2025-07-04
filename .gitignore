@@ -27,3 +27,6 @@ dist-ssr
 .wrangler/*
 .env
 .env.*
+
+# TypeScript build cache files
+*.tsbuildinfo
