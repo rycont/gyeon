@@ -20,6 +20,7 @@ export async function compareWordRoute(c: Context) {
             sentence,
             lm,
             trialCounts: chatHistory.length / 2,
+            createdAt: new Date().toISOString(),
         }
 
         const logKey = ['trial', user, session, chatHistory.length / 2]
